@@ -1,274 +1,438 @@
 # 01 - Requirements and Planning
 
-Wireless design should begin with a clear understanding of business, technical, application, user, and environmental requirements.
+This directory contains the business, technical, operational, and wireless requirements that must be defined before conducting a wireless site survey or developing an enterprise Wi-Fi design.
 
-A well-defined requirements phase helps ensure that the wireless network is designed for the actual business needs rather than only for basic coverage.
+A successful wireless network begins with clearly defined requirements. The information collected during this phase directly influences the survey methodology, AP placement, RF design, channel planning, capacity planning, security architecture, and validation criteria.
 
 ---
 
-## 🎯 Objectives
+## Objectives
 
 The objectives of this phase are to:
 
-* Understand business requirements
-* Identify wireless applications
-* Determine coverage requirements
-* Determine capacity requirements
-* Identify client device types
-* Define performance targets
-* Understand security requirements
-* Identify environmental constraints
-* Define survey requirements
+* Understand business and operational requirements
+* Identify users, devices, applications, and locations
+* Define coverage and performance expectations
+* Determine capacity and client-density requirements
+* Identify security and authentication requirements
+* Understand regulatory and compliance requirements
+* Define survey scope and methodology
+* Establish measurable design and acceptance criteria
 
 ---
 
-## 📋 Requirements Collection Process
+## Requirements and Planning Process
 
 ```text
 Business Requirements
         │
         ▼
+User and Device Requirements
+        │
+        ▼
 Application Requirements
         │
         ▼
-Client & Device Requirements
-        │
-        ▼
-Coverage & Capacity Requirements
+Coverage and Capacity Requirements
         │
         ▼
 Security Requirements
         │
         ▼
-Environmental Assessment
+Survey Planning
         │
         ▼
-Wireless Design Requirements
+Design Acceptance Criteria
 ```
 
 ---
 
-## 🏢 Business Requirements
+## Directory Contents
 
-Understand how the wireless network supports the business.
-
-Important questions:
-
-* What areas require wireless coverage?
-* Is wireless the primary network access method?
-* How critical is wireless connectivity?
-* What is the expected network availability?
-* Are there business-critical wireless applications?
-* Are there future expansion requirements?
+| File                                   | Description                                                                  |
+| -------------------------------------- | ---------------------------------------------------------------------------- |
+| `client-requirements-questionnaire.md` | Questions to collect business and technical requirements from the customer   |
+| `application-requirements.md`          | Requirements for voice, video, collaboration, IoT, and business applications |
+| `survey-planning-checklist.md`         | Checklist for preparing and executing a wireless site survey                 |
+| `wireless-design-requirements.md`      | General technical requirements for the wireless network design               |
+| `capacity-and-density-requirements.md` | User density, client count, throughput, and capacity requirements            |
+| `coverage-requirements.md`             | Coverage, signal strength, SNR, and roaming requirements                     |
+| `security-requirements.md`             | Authentication, encryption, segmentation, and security requirements          |
+| `acceptance-criteria.md`               | Measurable criteria used to validate the completed wireless network          |
 
 ---
 
-## 📱 Application Requirements
+## Key Requirement Categories
+
+### 1. Business Requirements
+
+Identify:
+
+* Business locations and buildings
+* Business-critical areas
+* Operating hours
+* Business-critical applications
+* Required network availability
+* Growth expectations
+* Budget and project constraints
+
+---
+
+### 2. User Requirements
+
+Identify:
+
+* Number of users
+* User types
+* User mobility requirements
+* BYOD requirements
+* Guest access requirements
+* Remote or temporary users
+* Special user groups
+
+Example:
+
+```text
+Employees
+Contractors
+Visitors
+Executives
+Warehouse Staff
+Production Users
+IoT Devices
+Voice Users
+```
+
+---
+
+### 3. Device Requirements
+
+Document:
+
+* Number of wireless clients
+* Client types
+* Wi-Fi standards supported
+* 2.4 GHz requirements
+* 5 GHz requirements
+* 6 GHz requirements
+* Legacy client requirements
+* IoT devices
+* Barcode scanners
+* Wireless printers
+* Medical or industrial devices
+
+---
+
+### 4. Application Requirements
 
 Identify applications that will use the wireless network.
 
 Examples:
 
+* Microsoft Teams
 * Voice over Wi-Fi
 * Video conferencing
-* Real-time collaboration
-* Point-of-Sale systems
-* Barcode scanners
-* Healthcare applications
-* Industrial IoT
-* Warehouse applications
-* Guest Internet access
+* Cloud applications
+* ERP applications
+* Warehouse management systems
+* Barcode scanning
 * Location services
+* IoT applications
+* Industrial automation
 
-Each application may have different requirements for:
+Each critical application should be evaluated for:
 
 * Bandwidth
 * Latency
+* Jitter
 * Packet loss
-* Roaming
-* Availability
-* Security
+* Roaming requirements
+* Availability requirements
 
 ---
 
-## 👥 User and Client Requirements
+### 5. Coverage Requirements
 
-Collect information about:
+Define the required coverage area and minimum performance requirements.
 
-* Number of users
-* Number of wireless clients
-* Client types
-* Client capabilities
-* Expected concurrent users
-* Device density
-* BYOD requirements
-* IoT device requirements
+Typical parameters include:
 
-Example:
+| Requirement     | Example               |
+| --------------- | --------------------- |
+| Coverage        | -67 dBm               |
+| Voice coverage  | -67 dBm or better     |
+| Data coverage   | -67 to -70 dBm        |
+| SNR             | 25 dB or higher       |
+| Roaming overlap | 15–20%                |
+| Packet loss     | Application dependent |
 
-```text
-Location: Open Office
-
-Users: 150
-Expected Wireless Clients: 350
-Concurrent Clients: 250
-Voice Devices: 30
-IoT Devices: 50
-Guest Clients: 100
-```
+The final values must be agreed with the customer and aligned with application requirements.
 
 ---
 
-## 📶 Coverage Requirements
-
-Define the required coverage area.
-
-Examples:
-
-* Office areas
-* Meeting rooms
-* Corridors
-* Warehouses
-* Production areas
-* Outdoor areas
-* Parking areas
-* Loading docks
-
-Define the required coverage targets based on the application.
-
-Example:
-
-| Application       |           RSSI Target |            SNR Target |
-| ----------------- | --------------------: | --------------------: |
-| General Data      |               -67 dBm |                 25 dB |
-| Voice             |               -67 dBm |                 25 dB |
-| High-Density Data |               -65 dBm |                 25 dB |
-| IoT               | Application dependent | Application dependent |
-
-These values should always be validated against the specific application and client requirements.
-
----
-
-## 📊 Capacity Requirements
-
-Coverage alone does not guarantee a good wireless network.
+### 6. Capacity and Density Requirements
 
 Capacity planning should consider:
 
-* Number of users
-* Number of clients
-* Concurrent devices
-* Application bandwidth
-* AP client capacity
-* Channel width
-* Available spectrum
-* Channel utilization
+```text
+Number of Users
+        +
+Number of Devices
+        +
+Application Traffic
+        +
+Peak Usage
+        +
+Future Growth
+        =
+Required Wireless Capacity
+```
 
-A high-density area may require additional APs even when the signal strength is excellent.
+Important information includes:
+
+* Average clients per AP
+* Peak client count
+* High-density areas
+* Expected concurrent users
+* Expected traffic per user
+* Future growth
+* Special events or peak periods
 
 ---
 
-## 🔐 Security Requirements
+### 7. Security Requirements
 
-Define security requirements such as:
+Define:
 
-* WPA2-Enterprise
-* WPA3-Enterprise
+* SSID architecture
+* WPA2/WPA3 requirements
 * 802.1X authentication
+* RADIUS requirements
 * Certificate-based authentication
 * Guest access
-* BYOD
-* IoT segmentation
-* Network access control
-* Dynamic role assignment
-* VLAN segmentation
+* BYOD access
+* Device onboarding
+* Network segmentation
+* Role-based access control
+* NAC integration
 
-Example platforms:
-
-* Aruba ClearPass
-* Cisco ISE
-* RADIUS
-* PKI
-* Identity-based access control
-
----
-
-## 🏗️ Environmental Requirements
-
-The physical environment has a significant impact on RF performance.
-
-Document:
-
-* Building construction
-* Wall materials
-* Floor materials
-* Ceiling height
-* Metal structures
-* Glass walls
-* Concrete walls
-* Machinery
-* Elevators
-* Storage racks
-* Production equipment
-
-Example:
+Example technologies:
 
 ```text
-Concrete Wall
-      │
-      ▼
-High RF Attenuation
-      │
-      ▼
-Reduced Coverage
-      │
-      ▼
-Additional AP Required
+802.1X
+RADIUS
+Cisco ISE
+Aruba ClearPass
+WPA2-Enterprise
+WPA3-Enterprise
+EAP-TLS
+PEAP
+MAC Authentication Bypass
+Guest Captive Portal
 ```
 
 ---
 
-## 🗺️ Required Site Information
+### 8. Survey Planning
 
-Before starting the survey, collect:
+Before beginning the survey, define:
 
+* Survey type
+* Survey scope
+* Building floor plans
+* Areas to be surveyed
+* Operating hours
+* Survey equipment
+* Survey software
+* AP models
+* Antenna types
+* Mounting constraints
+* Access requirements
+* Safety requirements
+
+Possible survey types:
+
+```text
+Predictive Survey
+Passive Survey
+Active Survey
+AP-on-a-Stick Survey
+Spectrum Analysis
+Post-Deployment Validation Survey
+```
+
+---
+
+## Recommended Requirement Workflow
+
+### Step 1 - Understand the Environment
+
+Collect:
+
+* Building plans
 * Floor plans
-* Building drawings
-* Ceiling plans
-* Floor dimensions
-* Wall construction details
-* AP mounting restrictions
-* Network room locations
-* Cable pathways
+* Construction materials
+* Ceiling height
+* Wall types
+* Existing network topology
 * Existing AP locations
-* Existing wireless survey results
 
 ---
 
-## ✅ Planning Checklist
+### Step 2 - Understand the Users and Devices
 
-* [ ] Business requirements collected
-* [ ] Application requirements identified
-* [ ] User density identified
-* [ ] Client device types identified
-* [ ] Coverage requirements defined
-* [ ] Capacity requirements defined
-* [ ] Security requirements defined
-* [ ] Building construction documented
-* [ ] Floor plans collected
-* [ ] Survey areas identified
-* [ ] Wireless design targets approved
+Document:
+
+* Number of users
+* Number of devices
+* Device types
+* Mobility requirements
+* High-density areas
 
 ---
 
-## 📂 Related Files
+### Step 3 - Understand the Applications
 
-* `wireless-requirements.md`
-* `client-requirements-questionnaire.md`
-* `application-requirements.md`
-* `survey-planning-checklist.md`
+Identify:
+
+* Business-critical applications
+* Real-time applications
+* Cloud applications
+* Voice and video requirements
+* IoT applications
 
 ---
 
-> **Design Principle:** A successful wireless network begins with understanding the business and application requirements before selecting AP models or placing access points.
+### Step 4 - Define Technical Targets
 
+Establish:
+
+* Minimum RSSI
+* Minimum SNR
+* Channel width
+* Capacity targets
+* Roaming requirements
+* Availability requirements
+
+---
+
+### Step 5 - Plan the Survey
+
+Define:
+
+* Survey methodology
+* Survey equipment
+* Survey areas
+* AP-on-a-Stick locations
+* Required documentation
+
+---
+
+### Step 6 - Define Acceptance Criteria
+
+The wireless design should have measurable validation criteria.
+
+Example:
+
+```text
+Coverage:
+Minimum RSSI: -67 dBm
+
+Signal Quality:
+Minimum SNR: 25 dB
+
+Roaming:
+Seamless roaming for voice clients
+
+Capacity:
+Maximum average clients per AP defined by design
+
+Availability:
+Wireless service must meet agreed SLA
+
+Security:
+All corporate clients must authenticate using 802.1X
+```
+
+---
+
+## Requirements Traceability
+
+All requirements should be traceable throughout the project.
+
+```text
+Requirement
+    │
+    ▼
+Survey
+    │
+    ▼
+RF Design
+    │
+    ▼
+AP Placement
+    │
+    ▼
+Implementation
+    │
+    ▼
+Validation
+    │
+    ▼
+Acceptance
+```
+
+This ensures that the final wireless network meets the original business and technical requirements.
+
+---
+
+## Best Practices
+
+* Do not start a wireless survey without understanding the requirements.
+* Do not design only for coverage; design for capacity and application performance.
+* Always identify critical applications.
+* Consider future growth during the initial design.
+* Document high-density areas separately.
+* Validate requirements with the customer.
+* Use measurable acceptance criteria.
+* Maintain traceability between requirements and final design.
+* Document assumptions and design constraints.
+* Review requirements whenever the project scope changes.
+
+---
+
+## Related Directories
+
+```text
+01-Requirements-and-Planning/
+        │
+        ├── 02-Site-Survey/
+        ├── 03-RF-Design/
+        ├── 04-AP-Placement/
+        ├── 05-Wireless-Architecture/
+        └── 07-Validation-and-Testing/
+```
+
+---
+
+## Requirement Status
+
+| Category                 | Status        |
+| ------------------------ | ------------- |
+| Business Requirements    | ☐ Not Started |
+| User Requirements        | ☐ Not Started |
+| Device Requirements      | ☐ Not Started |
+| Application Requirements | ☐ Not Started |
+| Coverage Requirements    | ☐ Not Started |
+| Capacity Requirements    | ☐ Not Started |
+| Security Requirements    | ☐ Not Started |
+| Survey Planning          | ☐ Not Started |
+| Acceptance Criteria      | ☐ Not Started |
+
+---
+
+## Document Control
+
+| Version | Date       | Author                   | Description     |
+| ------- | ---------- | ------------------------ | --------------- |
+| 1.0     | YYYY-MM-DD | Network Engineering Team | Initial version |
