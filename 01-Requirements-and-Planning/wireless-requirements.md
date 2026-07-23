@@ -1,279 +1,798 @@
-# Wireless Requirements Document
+Here is the complete `wireless-design-requirements.md` file:
 
-## 1. Document Information
+# Wireless Design Requirements
 
-| Item                    | Details |
-| ----------------------- | ------- |
-| Project Name            |         |
-| Customer / Organization |         |
-| Site / Location         |         |
-| Building / Campus       |         |
-| Number of Floors        |         |
-| Document Owner          |         |
-| Version                 |         |
-| Date                    |         |
+This document defines the technical, operational, security, performance, and scalability requirements for designing an enterprise wireless network.
+
+The wireless design must translate business and application requirements into a reliable, secure, scalable, and measurable Wi-Fi architecture.
 
 ---
 
-## 2. Project Overview
+## 1. Purpose
 
-Describe the purpose of the wireless deployment or upgrade.
+The purpose of this document is to define the requirements for:
+
+* Wireless network architecture
+* Access point selection
+* RF design
+* Coverage
+* Capacity
+* Roaming
+* Wireless security
+* Network segmentation
+* High availability
+* Management and monitoring
+* Scalability
+* Performance validation
+
+---
+
+## 2. Design Principles
+
+The wireless network should follow these principles:
+
+```text
+Business Requirements
+        │
+        ▼
+Application Requirements
+        │
+        ▼
+Coverage + Capacity Requirements
+        │
+        ▼
+RF Design
+        │
+        ▼
+AP Placement
+        │
+        ▼
+Security Architecture
+        │
+        ▼
+Implementation
+        │
+        ▼
+Validation
+```
+
+The design must be:
+
+* Requirement-driven
+* Capacity-aware
+* Secure by design
+* Scalable
+* Highly available
+* Operationally manageable
+* Measurable
+* Documented
+
+---
+
+## 3. Wireless Architecture Requirements
+
+The wireless architecture must define:
+
+* Wireless management platform
+* Access point architecture
+* Controller architecture
+* Cloud management requirements
+* Network connectivity model
+* SSID architecture
+* Authentication architecture
+* VLAN architecture
+* IP addressing
+* DHCP architecture
+* DNS requirements
+* High-availability design
+
+Possible architectures include:
+
+```text
+Controller-Based WLAN
+        │
+        ├── Centralized Controller
+        ├── Redundant Controllers
+        └── Virtual Controller
+
+Cloud-Managed WLAN
+        │
+        ├── Cloud Management
+        ├── Cloud Authentication Integration
+        └── Cloud-Based Monitoring
+
+Distributed WLAN
+        │
+        ├── Branch APs
+        ├── Local Forwarding
+        └── Centralized Management
+```
+
+---
+
+## 4. Access Point Requirements
+
+Access points must be selected based on:
+
+* Coverage requirements
+* Capacity requirements
+* Client density
+* Application requirements
+* Frequency band requirements
+* Antenna requirements
+* Environmental conditions
+* PoE requirements
+* Regulatory requirements
+
+The selected AP should support the required:
+
+* 2.4 GHz operation
+* 5 GHz operation
+* 6 GHz operation where required
+* Wi-Fi generation
+* MIMO capability
+* Spatial streams
+* Security standards
+* Management platform
+
+---
+
+## 5. AP Model Selection
+
+AP model selection must consider the environment.
+
+### Standard Office
+
+Requirements may include:
+
+* Integrated antennas
+* Standard client density
+* Indoor deployment
+* Normal ceiling height
+
+### High-Density Environment
+
+Requirements may include:
+
+* Higher spatial streams
+* Higher client capacity
+* Greater processing capability
+* More efficient channel reuse
+
+### Warehouse
+
+Requirements may include:
+
+* External antennas
+* High mounting height
+* Long-distance coverage
+* High shelving
+* Moving clients
+
+### Outdoor Environment
+
+Requirements may include:
+
+* Weather resistance
+* External antennas
+* Environmental protection
+* Lightning protection
+
+---
+
+## 6. RF Design Requirements
+
+The RF design must define:
+
+* Channel plan
+* Channel width
+* Transmit power
+* Minimum data rates
+* Band steering
+* Radio management
+* DFS behavior
+* Channel reuse
+* RF profiles
+
+The design must minimize:
+
+* Co-channel interference
+* Adjacent-channel interference
+* Excessive cell overlap
+* Excessive transmit power
+* Non-Wi-Fi interference
+
+---
+
+## 7. Frequency Band Design
+
+### 2.4 GHz
+
+The design should consider:
+
+* Limited channel availability
+* High interference
+* Legacy devices
+* IoT requirements
+
+Recommended channel width:
+
+```text
+20 MHz
+```
+
+### 5 GHz
+
+The design should consider:
+
+* Channel availability
+* DFS channels
+* Client compatibility
+* Capacity requirements
+* Channel width
+
+### 6 GHz
+
+The design should consider:
+
+* Supported client devices
+* Regulatory requirements
+* Security requirements
+* Channel availability
+* Power levels
+* Channel width
+
+---
+
+## 8. Channel Width Requirements
+
+Channel width must be selected based on capacity and interference conditions.
+
+| Environment         | Typical Approach                            |
+| ------------------- | ------------------------------------------- |
+| High Density        | 20 MHz                                      |
+| Standard Enterprise | 20/40 MHz                                   |
+| Low Density         | 40/80 MHz where appropriate                 |
+| 6 GHz               | Based on capacity and spectrum availability |
+
+Wider channels do not automatically provide better performance.
+
+Channel width must be selected based on:
+
+```text
+Available Spectrum
+        +
+Client Density
+        +
+Application Traffic
+        +
+Interference
+        +
+Required Capacity
+```
+
+---
+
+## 9. Transmit Power Requirements
+
+Transmit power should be designed to:
+
+* Provide required coverage
+* Maintain balanced uplink and downlink
+* Support roaming
+* Reduce interference
+* Improve channel reuse
+
+Avoid using maximum transmit power by default.
+
+The design should consider:
+
+* AP transmit power
+* Client transmit power
+* Cell size
+* Adjacent AP power
+* Frequency band
+
+---
+
+## 10. Coverage Requirements
+
+The wireless design must meet the approved coverage targets.
 
 Example:
 
-> The objective of this project is to design and deploy a reliable, secure, scalable, and high-performing enterprise wireless network that supports business-critical applications, users, IoT devices, voice, mobility, and future growth.
-
----
-
-## 3. Business Requirements
-
-Document the business objectives of the wireless network.
-
-### Requirements
-
-* [ ] Reliable wireless connectivity
-* [ ] High availability
-* [ ] Improved wireless coverage
-* [ ] Increased capacity
-* [ ] Support for business-critical applications
-* [ ] Support for mobility
-* [ ] Support for IoT devices
-* [ ] Guest wireless access
-* [ ] Future scalability
-
-### Business Requirements
-
-| Requirement | Description | Priority            |
-| ----------- | ----------- | ------------------- |
-|             |             | High / Medium / Low |
-|             |             | High / Medium / Low |
-|             |             | High / Medium / Low |
-
----
-
-## 4. Coverage Requirements
-
-Identify the areas requiring wireless coverage.
-
-| Area            | Required Coverage | Priority |
-| --------------- | ----------------- | -------- |
-| Office          | Yes / No          |          |
-| Meeting Rooms   | Yes / No          |          |
-| Corridors       | Yes / No          |          |
-| Warehouse       | Yes / No          |          |
-| Production Area | Yes / No          |          |
-| Outdoor Area    | Yes / No          |          |
-| Parking Area    | Yes / No          |          |
-
----
-
-## 5. Coverage Design Targets
-
-Define the minimum acceptable wireless performance.
-
-| Metric                      | Target |
-| --------------------------- | ------ |
-| Minimum RSSI                |        |
-| Minimum SNR                 |        |
-| Maximum Noise Floor         |        |
-| Maximum Channel Utilization |        |
-| Minimum Data Rate           |        |
-| Maximum Packet Loss         |        |
-| Maximum Latency             |        |
-
-Example design targets:
-
 ```text
-RSSI:              -67 dBm or better
-SNR:                25 dB or better
-Noise Floor:       -85 dBm or lower
-Channel Utilization: < 50%
-Packet Loss:        < 1%
+Minimum RSSI:
+-67 dBm for defined application areas
+
+Minimum SNR:
+25 dB or greater
+
+Roaming:
+Required overlap between adjacent AP cells
+
+Coverage:
+All approved service areas must meet the defined target
 ```
 
-> Design targets must be validated against the application and business requirements.
+Coverage targets must be documented per application where necessary.
 
 ---
 
-## 6. Capacity Requirements
+## 11. Capacity Requirements
 
-Document the expected number of users and devices.
+Capacity planning must consider:
 
-| Item                    | Quantity |
-| ----------------------- | -------: |
-| Total Users             |          |
-| Total Wireless Devices  |          |
-| Peak Concurrent Devices |          |
-| Voice Devices           |          |
-| IoT Devices             |          |
-| Guest Devices           |          |
-| High-Bandwidth Devices  |          |
+* Number of users
+* Number of devices
+* Concurrent clients
+* Application traffic
+* Peak traffic
+* Client distribution
+* Future growth
 
----
+The design must not rely only on maximum theoretical AP client counts.
 
-## 7. Application Requirements
-
-| Application    | Users / Devices | Bandwidth | Latency | Roaming               |
-| -------------- | --------------: | --------- | ------- | --------------------- |
-| Voice          |                 |           |         | Required              |
-| Video          |                 |           |         | Required              |
-| Data           |                 |           |         | Optional              |
-| IoT            |                 |           |         | Application dependent |
-| Guest Internet |                 |           |         | Optional              |
-
----
-
-## 8. Wireless Security Requirements
-
-Document the required security model.
-
-### Authentication
-
-* [ ] WPA2-Enterprise
-* [ ] WPA3-Enterprise
-* [ ] 802.1X
-* [ ] Certificate Authentication
-* [ ] PSK
-* [ ] MPSK
-* [ ] MAC Authentication Bypass
-
-### Identity and Access Control
-
-* [ ] Dynamic VLAN Assignment
-* [ ] Dynamic Role Assignment
-* [ ] Network Access Control
-* [ ] Guest Authentication
-* [ ] Device Profiling
-* [ ] IoT Segmentation
-
-### Security Platforms
-
-* [ ] Aruba ClearPass
-* [ ] Cisco ISE
-* [ ] Microsoft NPS
-* [ ] Other: __________
-
----
-
-## 9. SSID Requirements
-
-| SSID      | Purpose | Authentication | VLAN / Role |
-| --------- | ------- | -------------- | ----------- |
-| Corporate |         |                |             |
-| Guest     |         |                |             |
-| IoT       |         |                |             |
-| Voice     |         |                |             |
-
-### SSID Design Principles
-
-* Minimize unnecessary SSIDs
-* Avoid excessive broadcast overhead
-* Use appropriate authentication
-* Apply role-based access control
-* Segment different device types
-* Use appropriate QoS policies
-
----
-
-## 10. Mobility and Roaming Requirements
-
-Document whether fast roaming is required.
-
-* [ ] 802.11k
-* [ ] 802.11v
-* [ ] 802.11r
-* [ ] Fast roaming
-* [ ] Voice roaming
-* [ ] Seamless application mobility
-
-### Roaming Applications
-
-* Voice
-* Video
-* Warehouse scanners
-* Healthcare devices
-* Industrial mobility
-* Real-time applications
-
----
-
-## 11. Regulatory and RF Requirements
-
-Document the regulatory domain:
+Actual capacity depends on:
 
 ```text
-Country / Region:
-Regulatory Domain:
-Supported Bands:
-2.4 GHz: Yes / No
-5 GHz:   Yes / No
-6 GHz:   Yes / No
-DFS Allowed: Yes / No
+Client Count
+        +
+Traffic Profile
+        +
+Airtime Utilization
+        +
+Channel Width
+        +
+RF Conditions
 ```
 
 ---
 
-## 12. Existing Infrastructure
+## 12. High-Density Design
 
-Document the current environment.
-
-| Component                   | Details |
-| --------------------------- | ------- |
-| Wireless Platform           |         |
-| AP Model                    |         |
-| Controller / Cloud Platform |         |
-| Switch Platform             |         |
-| PoE Availability            |         |
-| Authentication Platform     |         |
-| Existing SSIDs              |         |
-| Existing RF Issues          |         |
-
----
-
-## 13. Future Growth
-
-Consider expected growth over the next:
-
-* 1 year
-* 3 years
-* 5 years
+High-density areas require a separate design approach.
 
 Consider:
 
-* Additional users
+* Smaller cells
+* More APs
+* Lower transmit power
+* Narrower channels
+* Increased channel reuse
+* Client distribution
+* Capacity per radio
+
+Examples:
+
+* Conference rooms
+* Auditoriums
+* Classrooms
+* Cafeterias
+* Stadiums
+* Training centers
+
+---
+
+## 13. SSID Design Requirements
+
+The number of SSIDs should be minimized.
+
+Each SSID creates additional management overhead and consumes airtime.
+
+The design should define:
+
+* SSID name
+* Purpose
+* Authentication
+* Encryption
+* VLAN
+* IP subnet
+* User groups
+* Access policy
+
+Example:
+
+| SSID      | Purpose       | Authentication            |
+| --------- | ------------- | ------------------------- |
+| Corporate | Employees     | 802.1X                    |
+| Guest     | Visitors      | Captive Portal            |
+| IoT       | Devices       | PSK / MAB                 |
+| Voice     | Voice devices | Enterprise Authentication |
+
+---
+
+## 14. Wireless Security Requirements
+
+The design must define:
+
+* Authentication method
+* Encryption method
+* Identity source
+* RADIUS servers
+* Certificate requirements
+* Guest authentication
+* Device onboarding
+* Network segmentation
+
+Possible technologies:
+
+```text
+WPA2-Enterprise
+WPA3-Enterprise
+802.1X
+RADIUS
+EAP-TLS
+PEAP
+MAC Authentication Bypass
+Captive Portal
+Certificate Authentication
+```
+
+---
+
+## 15. Network Segmentation
+
+Wireless users and devices should be segmented according to business and security requirements.
+
+Possible segmentation:
+
+```text
+Corporate Users
+        │
+        ├── Employee VLAN
+        ├── Contractor VLAN
+        └── Executive VLAN
+
+Guest Users
+        │
+        └── Internet-Only Network
+
+IoT Devices
+        │
+        └── Restricted IoT Network
+
+Voice Devices
+        │
+        └── Voice Network
+```
+
+Segmentation may be implemented using:
+
+* VLANs
+* Dynamic VLAN assignment
+* User roles
+* Security policies
+* Firewall policies
+* NAC policies
+
+---
+
+## 16. Roaming Requirements
+
+The design must support the required mobility model.
+
+Consider:
+
+* Client mobility
+* AP cell overlap
+* Authentication delays
+* 802.11k
+* 802.11v
+* 802.11r
+* Voice roaming
+
+Roaming should be validated with actual client devices.
+
+---
+
+## 17. High Availability Requirements
+
+The wireless infrastructure should support the required availability level.
+
+Consider:
+
+* Controller redundancy
+* Cloud service availability
+* AP failover
+* WAN dependency
+* Authentication server redundancy
+* DHCP redundancy
+* DNS redundancy
+* Network path redundancy
+
+Example:
+
+```text
+Primary Controller
+        │
+        ├── AP Failover
+        │
+Secondary Controller
+        │
+        └── High Availability
+```
+
+---
+
+## 18. Wired Network Requirements
+
+The wired infrastructure must support the wireless design.
+
+Verify:
+
+* PoE capacity
+* Switch port availability
+* Uplink capacity
+* VLAN configuration
+* MTU requirements
+* DHCP relay
+* Routing
+* DNS
+* NTP
+* Firewall rules
+
+The switch must provide sufficient power for the selected AP.
+
+---
+
+## 19. IP Addressing Requirements
+
+The design must define:
+
+* AP management subnet
+* Client VLANs
+* Guest networks
+* IoT networks
+* Voice networks
+* DHCP scopes
+* Default gateways
+* DNS servers
+
+IP addressing should support:
+
+* Current users
+* Expected growth
+* Site expansion
 * Additional devices
+
+---
+
+## 20. QoS Requirements
+
+Quality of Service should be designed for applications that require predictable performance.
+
+Consider:
+
+* Voice
+* Video
+* Collaboration
+* Business-critical applications
+
+Wireless QoS may include:
+
+```text
+Voice
+Video
+Best Effort
+Background
+```
+
+The QoS design should be consistent across:
+
+```text
+Client
+   │
+   ▼
+Wireless Network
+   │
+   ▼
+Access Switch
+   │
+   ▼
+Core Network
+   │
+   ▼
+WAN / Internet
+```
+
+---
+
+## 21. Management and Monitoring
+
+The wireless solution should provide visibility into:
+
+* AP health
+* Client health
+* RF performance
+* Channel utilization
+* Noise
+* Interference
+* Authentication failures
+* Roaming
+* Application performance
+
+Monitoring should support:
+
+* Alerts
+* Historical trends
+* Reporting
+* Capacity analysis
+* Troubleshooting
+
+---
+
+## 22. Automation and Integration
+
+Where applicable, the wireless platform should support:
+
+* REST APIs
+* Automation
+* Configuration templates
+* Infrastructure as Code
+* Network monitoring integration
+* ITSM integration
+
+Possible integrations:
+
+```text
+Wireless Platform
+        │
+        ├── REST API
+        ├── Python
+        ├── Ansible
+        ├── Terraform
+        ├── ServiceNow
+        └── Monitoring Platform
+```
+
+---
+
+## 23. Scalability Requirements
+
+The design should support:
+
+* User growth
+* Device growth
+* Additional APs
+* Additional buildings
+* Additional sites
 * New applications
-* IoT expansion
-* Wi-Fi 6E / Wi-Fi 7 adoption
-* Increased bandwidth requirements
+* New wireless technologies
+
+The design should avoid unnecessary redesign as the environment grows.
 
 ---
 
-## 14. Final Requirements Summary
+## 24. Regulatory and Compliance Requirements
 
-Before beginning the wireless design, confirm:
+The design must consider applicable:
 
-* [ ] Coverage requirements approved
-* [ ] Capacity requirements approved
-* [ ] Application requirements documented
-* [ ] Security requirements approved
-* [ ] Roaming requirements documented
-* [ ] Regulatory requirements confirmed
-* [ ] Existing infrastructure documented
-* [ ] Future growth considered
+* Wireless regulations
+* Frequency restrictions
+* DFS requirements
+* Data protection requirements
+* Security policies
+* Industry regulations
 
----
-
-## 15. Approval
-
-| Role               | Name | Approval | Date |
-| ------------------ | ---- | -------- | ---- |
-| Business Owner     |      |          |      |
-| IT Owner           |      |          |      |
-| Network Architect  |      |          |      |
-| Security Architect |      |          |      |
+All wireless equipment must comply with applicable regional regulations.
 
 ---
 
-> **Design Principle:** Wireless design requirements should be driven by business applications, client behavior, performance expectations, security requirements, and future growth—not only by coverage.
+## 25. Design Documentation Requirements
 
+The final design documentation should include:
+
+* Network architecture
+* Logical topology
+* Physical topology
+* AP placement
+* RF design
+* Channel plan
+* Power plan
+* SSID architecture
+* VLAN architecture
+* Security architecture
+* IP addressing
+* High-availability design
+* Monitoring design
+* Implementation plan
+* Validation plan
+
+---
+
+## 26. Design Assumptions
+
+All assumptions must be documented.
+
+Example:
+
+```text
+- Floor plans are current.
+- Building construction information is accurate.
+- Existing PoE switches support the selected APs.
+- Required VLANs will be available.
+- RADIUS services are available.
+- Required network connectivity is available.
+```
+
+---
+
+## 27. Design Constraints
+
+Document constraints such as:
+
+* Limited cable pathways
+* Restricted AP mounting locations
+* Limited PoE capacity
+* Building restrictions
+* RF interference
+* Budget limitations
+* Limited access to areas
+* Legacy client devices
+
+Each constraint should include its potential impact.
+
+---
+
+## 28. Design Acceptance Criteria
+
+The final wireless design should meet:
+
+```text
+Coverage Requirements
+        +
+Capacity Requirements
+        +
+Application Requirements
+        +
+Security Requirements
+        +
+Availability Requirements
+        +
+Operational Requirements
+```
+
+Example:
+
+* [ ] Coverage targets achieved
+* [ ] Capacity targets achieved
+* [ ] Application requirements satisfied
+* [ ] Security requirements satisfied
+* [ ] Roaming requirements validated
+* [ ] High-availability requirements satisfied
+* [ ] Documentation completed
+
+---
+
+## 29. Design Review Checklist
+
+Before implementation:
+
+* [ ] Business requirements reviewed
+* [ ] Application requirements reviewed
+* [ ] Survey results reviewed
+* [ ] AP placement approved
+* [ ] AP models approved
+* [ ] Antenna models approved
+* [ ] Channel plan reviewed
+* [ ] Power plan reviewed
+* [ ] SSID design approved
+* [ ] Security design approved
+* [ ] VLAN design approved
+* [ ] IP addressing approved
+* [ ] PoE requirements verified
+* [ ] High-availability design reviewed
+* [ ] Monitoring requirements reviewed
+* [ ] Implementation plan approved
+* [ ] Validation plan approved
+
+---
+
+## Document Control
+
+| Version | Date       | Author                   | Description     |
+| ------- | ---------- | ------------------------ | --------------- |
+| 1.0     | YYYY-MM-DD | Network Engineering Team | Initial version |
+
+Next recommended file: **`capacity-and-density-requirements.md`**.
